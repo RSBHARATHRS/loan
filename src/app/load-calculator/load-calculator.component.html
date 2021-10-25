@@ -1,0 +1,23 @@
+<div class="loanCalCon">
+    <h2>Loan</h2>
+    <label>Principal Amount :</label><input type="text" id="pAmount" #pAmount [value]="principleAmount"><br>
+    <label>Time (in months) :</label><input type="text" id="month" #month [value]="tmonth"><br>
+    <label>Rate of Interest :</label><input type="text" id="roi" #roi [value]="loantype.value"><br>
+    <label>Loan Type:</label>
+    <select id="loanType" #loantype (change)="valueChange(loantype.value)">
+        <option value=0>Select</option>
+        <option value=8>Home</option>
+        <option value=7>Vechicle</option>
+        <option value=12>Personal</option>
+        <option value=10>Education</option>
+    </select>
+    <div class="btnCnt">
+        <button type="button" class="btn btn-primary" (click)="calculate(pAmount.value, month.value, loantype.value)">Calculate</button>
+        <button type="button" class="btn btn-secondary" (click)="reset()">Reset</button>
+    </div>
+    <div class="resultCon">
+        <p>Principal Amount :<span>{{principleAmount}}</span></p>
+        <p>Total Interest :<span>{{interest}}</span></p>
+    </div>
+</div>
+
