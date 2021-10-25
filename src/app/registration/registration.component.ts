@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -7,9 +8,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor() { }
+
+  name:string = "";
+  email:string = "";
+  password:string = "";
+  cpassword:string = "";
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
-
+  register(n:string,e:string,p:string,cp:string){
+    if(n == "" || e == "" || p =="" || cp == ""){
+      alert("Enter valid Input");
+      return;
+    }
+    if(p != cp){
+      alert("New Password and Confirm password should be same");
+      return;
+    }
+    localStorage.setItem("name",n);
+    localStorage.setItem("email",e);
+    localStorage.setItem("pass",p);
+    alert("Register Successfully");
+    this.router.navigateByUrl("login");
+  }
 }
