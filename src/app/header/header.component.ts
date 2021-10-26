@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ServService } from '../serv.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: ServService, private router:Router) { }
 
   ngOnInit(): void {
+  }
+
+  removeAcc(){
+    localStorage.removeItem(this.service.userName);
+    this.router.navigateByUrl('');
   }
 
 }

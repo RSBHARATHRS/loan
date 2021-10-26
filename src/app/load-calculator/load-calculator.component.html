@@ -1,16 +1,25 @@
 <app-header></app-header>
+
+
+<div class="profile">
+    <h3>Profile</h3>
+    <p><strong>Name :</strong>{{name}}</p>
+    <p><strong>EmailID :</strong>{{email}}</p>
+    
+ 
+</div>
 <div class="loanCalCon">
     <h2>Interest Calculator</h2>
     <label>Principal Amount :</label><input type="text" id="pAmount" #pAmount [value]="principleAmount"><br>
     <label>Time (in months) :</label><input type="text" id="month" #month [value]="tmonth"><br>
-    <label>Rate of Interest :</label><input type="text" id="roi" #roi [value]="loantype.value"><br>
+    <label>Rate of Interest :</label><input type="text" id="roi" #roi [value]="selectedValue" (keyup)="valueChange(roi.value)"><br>
     <label>Loan Type:</label>
-    <select id="loanType" #loantype (change)="valueChange(loantype.value)">
+    <select id="loanType" #loantype [(ngModel)]="selectedValue">
         <option value=0>Select</option>
-        <option value=8>Home</option>
-        <option value=7>Vechicle</option>
-        <option value=12>Personal</option>
-        <option value=10>Education</option>
+        <option value=8>Home (8%)</option>
+        <option value=7>Vechicle (7%)</option>
+        <option value=12>Personal (12%)</option>
+        <option value=10>Education (10%)</option>
     </select>
     <div class="btnCnt">
         <button type="button" class="btn btn-primary" (click)="calculate(pAmount.value, month.value, loantype.value)">Calculate</button>
@@ -20,5 +29,19 @@
         <p>Principal Amount :<span>{{principleAmount}}</span></p>
         <p>Total Interest :<span>{{interest}}</span></p>
     </div>
+</div>
+<div class="twoWayCom compCon">
+    <h3>Two Way Data Binding</h3>
+    <input type="text" [(ngModel)]="mydata" style="width: 300px;height: 40px;border-radius: 10px;border: 1px solid black;" >  
+    <br><label>You are Entering:</label>
+    <span style="color: green;font-weight: bold;">{{mydata}}</span>
+</div>
+<div class="compCon">
+    <h3>Data Passing through services</h3>
+    <p>Component 1</p>
+    <input type="text" #val>
+    <button (click)="dblogic(val.value)" class="btn btn-primary">Click me</button><br>
+    <hr>
+    <app-comp></app-comp>
 </div>
 

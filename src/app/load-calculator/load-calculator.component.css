@@ -1,5 +1,5 @@
 .loanCalCon{
-    width: 400px;
+    width: 450px;
     margin: 20px auto;
     border: 0px solid gray;
     border-radius: 20px;
@@ -29,4 +29,18 @@ select{
 
 span{
     color:green;
+}
+
+.profile{
+    width: 400px;
+    margin: 20px auto;
+}
+.compCon{
+    width: 450px;
+    margin: 10px auto;
+    border: 0px solid gray;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 2px 2px 10px 2px gray;
 }

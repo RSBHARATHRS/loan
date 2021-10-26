@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServService } from '../serv.service';
 
 @Component({
   selector: 'app-load-calculator',
@@ -7,20 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoadCalculatorComponent implements OnInit {
   /**Variables**/
+  name:any = localStorage.getItem("name");
+  email:any = localStorage.getItem("email");
   selectedValue: number = 0;
   principleAmount:Number = 0; 
   tmonth:Number = 0; 
   roi:Number = 0; 
   interest:number = 0;
-  
+  mydata = "Hi";
 
-  constructor() { }
+  constructor(private dbl: ServService) { }
 
   ngOnInit(): void {
     
   }
+  dblogic(val:any){
+    this.dbl.dblogic(val);
+  }
   valueChange(val:any){
-    this.selectedValue = val;
+     this.selectedValue = val;
     console.log(val)
   }
 
@@ -39,6 +45,7 @@ export class LoadCalculatorComponent implements OnInit {
     this.tmonth = 0;
     this.roi = 0;
     this.interest = 0;
+    this.selectedValue = 0;
   }
 
 }

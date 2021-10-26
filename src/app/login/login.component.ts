@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ServService } from '../serv.service';
 
 @Component({
   selector: 'app-login',
@@ -8,25 +9,50 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  emailID:string = "";
-  password:string = "";
-  constructor(private router: Router) { 
-    this.emailID = String(localStorage.getItem("email"));
-    this.password = String(localStorage.getItem("pass"));
+  emailID:any = "";
+  passwordL:string = "";
+  constructor(private router: Router,private service:ServService) { 
+    // this.emailID = String(localStorage.getItem("email"));
+    // this.password = String(localStorage.getItem("pass"));
+   
   }
-
+ 
   ngOnInit(): void {
   }
   login(email:string,pass:string){
-    if(email != this.emailID){
-      alert("Enter a valid email");
+
+    let details:string | null = localStorage.getItem(email);
+    console.log(typeof(details))
+    if(details == null){
+      alert("no Such a user");
       return;
     }
-    if(pass != this.password){
+
+    interface MyObj {
+      name: string;
+      email: string;
+      password: string;
+    }
+  
+    let obj: MyObj  = JSON.parse(details);
+    console.log(obj.name);
+    console.log(obj.email);
+    console.log(obj.password);
+    
+    // if(email != this.emailID){
+    //   alert("Enter a valid email");
+    //   return;
+    // }
+    this.passwordL = pass;
+    if(obj.password != String(this.passwordL)){
       alert("Wrong Password");
       return;
     }
+    this.service.userName = obj.email;
+    this.service.userPassword = obj.password;
     alert("logged In Successfully");
     this.router.navigateByUrl('/loanCalc');
   }
+
+  
 }
