@@ -18,21 +18,25 @@ export class LoadCalculatorComponent implements OnInit {
   mydata = "Hi";
 
   constructor(private dbl: ServService) { 
-    this.name=dbl.userName;
+    
   }
 
   ngOnInit(): void {
-    
-  }
+    this.name=this.dbl.userName;
+    this.email=this.dbl.userEmail;
+   }
+
   dblogic(val:any){
     this.dbl.dblogic(val);
   }
+
   valueChange(val:any){
      this.selectedValue = val;
     console.log(val);
   }
 
-  calculate(p:any,t:any,r:any){
+  //Simple interest calculator function
+  calculate(p:any, t:any, r:any){
     this.principleAmount=p;
     this.tmonth=t;
     this.roi=r;

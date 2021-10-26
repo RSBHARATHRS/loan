@@ -11,46 +11,43 @@ export class LoginComponent implements OnInit {
 
   emailID:any = "";
   passwordL:string = "";
-  constructor(private router: Router,private service:ServService) { 
-    // this.emailID = String(localStorage.getItem("email"));
-    // this.password = String(localStorage.getItem("pass"));
-   
-  }
- 
-  ngOnInit(): void {
-  }
-  login(email:string,pass:string){
 
-    let details:string | null = localStorage.getItem(email);
-    console.log(typeof(details))
+  constructor(private router: Router,private service:ServService) {   }
+ 
+  ngOnInit(): void { }
+
+  login(email:string, pass:string){
+
+    let details:string | null = localStorage.getItem(email); //retriving user information from the local storage
     if(details == null){
-      alert("no Such a user");
+      alert("No Such a user found");
       return;
     }
 
+
     interface MyObj {
-      name: string;
-      email: string;
-      password: string;
+      userName: string;
+      userEmail: string;
+      userPassword: string;
     }
   
     let obj: MyObj  = JSON.parse(details);
-    console.log(obj.name);
-    console.log(obj.email);
-    console.log(obj.password);
+    console.log(obj.userName);
+    console.log(obj.userEmail);
+    console.log(obj.userPassword);
     
-    // if(email != this.emailID){
-    //   alert("Enter a valid email");
-    //   return;
-    // }
     this.passwordL = pass;
-    if(obj.password != String(this.passwordL)){
+    if(obj.userPassword != pass){
       alert("Wrong Password");
       return;
     }
-    this.service.userName = obj.email;
-    this.service.userPassword = obj.password;
-    alert("logged In Successfully");
+    
+    //storing user information into service for global usage
+    this.service.userName = obj.userName;
+    this.service.userEmail = obj.userEmail;
+    this.service.userPassword = obj.userPassword;
+
+    //once logged in successfully redirect to loan calculatot or home page
     this.router.navigateByUrl('/loanCalc');
   }
 

@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   }
 
   removeAcc(){
-    localStorage.removeItem(this.service.userName);
+    localStorage.removeItem(this.service.userEmail);//for remove the user details from the local storage
     this.router.navigateByUrl('');
   }
 

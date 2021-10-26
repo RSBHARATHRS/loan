@@ -9,19 +9,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-  inputData ="";
+  inputData = "";
 
-  name:string = "";
-  email:string = "";
-  password:string = "";
-  cpassword:string = "";
+  userName:string = "";
+  userEmail:string = "";
+  userPassword:string = "";
+  confirmPassword:string = "";
+
   constructor(private router: Router) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
-  register(n:string,e:string,p:string,cp:string){
-    if(n == "" || e == "" || p =="" || cp == ""){
+  register(n:string, email:string, p:string, cp:string){
+
+    /***** Validating the Entered value *****/
+    if(n == "" || email == "" || p =="" || cp == ""){
       alert("Enter valid Input");
       return;
     }
@@ -30,22 +32,16 @@ export class RegistrationComponent implements OnInit {
       return;
     }
     
+    //binding all data as a single object
     let userDetails ={
-      name : n,
-      email :e,
-      password :p
+      userName : n,
+      userEmail :email,
+      userPassword :p
     }
-  
-    localStorage.setItem(e,JSON.stringify(userDetails));
-
-
     
-    
-    // localStorage.setItem("name",n);
-    // localStorage.setItem("email",e);
-    // localStorage.setItem("pass",p);
-    // alert("Register Successfully");
-    this.router.navigateByUrl("login");
+    localStorage.setItem(email,JSON.stringify(userDetails)); //converting into string and storing into Local storage
+
+    this.router.navigateByUrl("login"); //navigate To login page once account created
     
   }
 }

@@ -7,6 +7,7 @@ export class ServService {
 
   variable="";
   userName = "";
+  userEmail = "";
   userPassword = "";
   constructor() { }
 
@@ -14,8 +15,9 @@ export class ServService {
     console.log("Value: '" + val +"' from component 1 is saved into variable 'variable'");
     this.variable = val;
   }
-  setUserDetails(name:string,pass:string){
+  setUserDetails(name:string,email:string, pass:string){
     this.userName = name;
+    this.userEmail = email;
     this.userPassword = pass;
   }
 }
