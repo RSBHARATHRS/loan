@@ -8,8 +8,8 @@ import { ServService } from '../serv.service';
 })
 export class LoadCalculatorComponent implements OnInit {
   /**Variables**/
-  name:any = localStorage.getItem("name");
-  email:any = localStorage.getItem("email");
+  name:any = "";
+  email:any = "";
   selectedValue: number = 0;
   principleAmount:Number = 0; 
   tmonth:Number = 0; 
@@ -17,7 +17,9 @@ export class LoadCalculatorComponent implements OnInit {
   interest:number = 0;
   mydata = "Hi";
 
-  constructor(private dbl: ServService) { }
+  constructor(private dbl: ServService) { 
+    this.name=dbl.userName;
+  }
 
   ngOnInit(): void {
     
@@ -27,7 +29,7 @@ export class LoadCalculatorComponent implements OnInit {
   }
   valueChange(val:any){
      this.selectedValue = val;
-    console.log(val)
+    console.log(val);
   }
 
   calculate(p:any,t:any,r:any){
@@ -37,7 +39,6 @@ export class LoadCalculatorComponent implements OnInit {
 
     this.interest = Number(this.roi) * (Number(this.principleAmount) / 100) * (Number(this.tmonth) * 0.0833333333);
     this.interest = Math.ceil(this.interest);
-
   }
 
   reset(){
@@ -47,5 +48,4 @@ export class LoadCalculatorComponent implements OnInit {
     this.interest = 0;
     this.selectedValue = 0;
   }
-
 }
