@@ -9,6 +9,8 @@ import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { HeaderComponent } from './header/header.component';
 import { CompComponent } from './comp/comp.component';
+import { CalculatorComponent } from './calculator/calculator.component';
+import { EMICalculatorComponent } from './calculator/emi-calculator/emi-calculator.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { CompComponent } from './comp/comp.component';
     LoginComponent,
     RegistrationComponent,
     HeaderComponent,
-    CompComponent
+    CompComponent,
+    CalculatorComponent,
+    EMICalculatorComponent
   ],
   imports: [
     BrowserModule,

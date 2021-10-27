@@ -24,6 +24,8 @@ export class LoadCalculatorComponent implements OnInit {
   ngOnInit(): void {
     this.name=this.dbl.userName;
     this.email=this.dbl.userEmail;
+    
+   
    }
 
   dblogic(val:any){
@@ -52,4 +54,9 @@ export class LoadCalculatorComponent implements OnInit {
     this.interest = 0;
     this.selectedValue = 0;
   }
+
+ 
+  
+
+
 }

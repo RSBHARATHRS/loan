@@ -1,0 +1,5 @@
+<label>First Name :</label><input type="text" #firstName>
+<label>Last Name :</label><input type="text" #lastName><br>
+<label>age :</label><input type="text" #age><br>
+<label>salary:</label><input type="text" #salary>
+<input type="button" (click)="getValue(firstName.value, lastName.value, age.value, salary.value)" value="Click me">
